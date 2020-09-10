@@ -16,7 +16,7 @@ public class Thread_Sleep {
                 Thread.sleep(1000);
                 System.out.println("线程sleep中");
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                e.printStackTrace();//
             }
             System.out.println("线程结束");
         }
