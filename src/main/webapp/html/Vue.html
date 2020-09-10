@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="test1">
+        <ul>
+            <li v-for="name in names">{{name.content}}</li>
+        </ul>
+    </div>
+
+    <div id="test2">
+        <input v-model="name" placeholder="请输入你的姓名">
+    </div>
+
+    <!--<div id="text3">时间为：{{date|formatDate}}</div>-->
+    <div id="text3">时间为：{{date}} </div>
+    <div id="text4">
+        <p v-if="show">显示测试</p>
+    </div>
+
+    <div id="text5">
+        <p v-if="show">测试v-on:click事件 </p>
+        <button v-on:click="handClick">点击隐藏</button>
+    </div>
+
+    <div id="computeExe">
+        <ul>
+            <li v-for="package in package1">名称{{package.name}} ；价格{{package.price}};数量{{package.count}}</li>
+        </ul>
+        <p>{{sum}}</p>
+    </div>
+
+
+    <div id="computeText">
+        <p>日期:{{date}} </p>
+        <p>秒数:{{second()}}</p>
+        <p>测试Compute:{{nowTime}}</p>
+    </div>
+    <script >
+        var computeText= new Vue({
+            el:'#computeText',
+            data:{
+                date:new Date()
+            },
+            methods:{
+                second:function () {
+                    return this.date.getSeconds();
+                }
+            },
+            computed:{
+                nowTime:function () {
+                    return Date.now();
+                }
+            }
+        })
+        var computeExe=new Vue({
+            el:'#computeExe',
+            data:{
+                package1:[{
+                    name:"phone",
+                    price:100,
+                    count:1
+                },{
+                    name:"TV",
+                    price:5999,
+                    count:2
+                }]
+            },
+            computed: {
+                sum:function () {
+                    var all=0;
+                    for (var i=0;i<this.package1.length;i++){
+                        all+=this.package1[i].price;
+                    }
+                    return all;
+                }
+            }
+        })
+
+        /**
+         * v-on:click
+         */
+        new Vue({
+            el:'#text5',
+            data:{
+                show:true
+            },
+            methods:{
+                handClick:function () {
+                    this.show=false;
+                }
+            }
+        })
+        new Vue({
+            el:'#text4',
+            data:{
+                show:false
+            }
+        })
+        var padFormat=function (value) {
+            return value>10?value:'0'+value;
+        }
+         /**
+          * 过滤器 filters
+          */
+        new Vue({
+           el:'#text3',
+           data:{
+               date:new Date()
+           },
+           mounted:function () {
+                   this.timer(setInterval(function () {
+                   this.date=new Date();
+               }),1000);
+           },
+            // filters:{
+            //     //过滤器进行格式化
+            //     formatDate:function (value) {
+            //         var time=new Date();
+            //         var year=time.getFullYear();
+            //         var month=padFormat(time.getMonth()+1);
+            //         var day=padFormat(time.getDate());
+            //         return year+'-'+month+'-'+day;
+            //     }
+            // },
+            beforDestroy:function () {
+                if (this.timer){
+                    clearInterval(this.timer);
+                }
+            }
+        });
+
+         /**
+          * vue生命周期
+          * @type {{name: string}}
+          */
+        var initName={
+            name:"张散"
+        }
+        var vue2=new Vue({
+            el:'#test2',
+            data:initName,
+            created:function () {
+                //created 为创建后调用，尚未挂载，所以$el尚不可用。需要初始化时可使用
+                console.log(this.name);
+            },
+            mounted:function () {
+                //mounted为el挂载到实例后调用，业务逻辑从此开始
+                console.log(this.$el);
+            }
+        });
+
+        var vue1=new Vue({
+            el:'#test1',
+            data:{
+                names:[
+                    {
+                        content:"1"
+                    },{
+                        content:"2"
+                    }
+                ]
+            }
+        })
+
+    </script>
+
+</body>
+</html>

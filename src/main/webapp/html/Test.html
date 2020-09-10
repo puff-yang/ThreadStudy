@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">{{reversedText}}</div>
+    <div id="app1">
+        <div :class="{'active':isActive,'error':isError}"></div>
+        <div :class="classes"></div>
+    </div>
+    <div id="app2">
+        <div :class="classes"></div>
+    </div>
+    <script>
+
+        new Vue({
+            el:'#app1',
+            data:{
+                isActive:true,
+                isError:true
+            },
+            computed: {
+                classes:function () {
+                    return {
+                        active:this.isActive && !this.error,'text-fail':this.error && this.error.type=='fail'
+                    }
+                }
+            }
+        })
+        var app=new Vue({
+            el:'#app',
+            data:{
+                text:'123,456'
+            },
+            computed: {
+                reversedText:function () {
+                    return this.text.split(',').reverse().join(',');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
