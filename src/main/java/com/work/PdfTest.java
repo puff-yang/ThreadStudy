@@ -1,21 +1,18 @@
 package com.work;
 
 
-import com.itextpdf.io.font.PdfEncodings;
-
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.vo.FormatRecordVO;
-import com.vo.QuestAndAnswerVO;
+import com.work.vo.FormatRecordVO;
+import com.work.vo.QuestAndAnswerVO;
 import org.junit.Test;
 
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

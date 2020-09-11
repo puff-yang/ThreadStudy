@@ -9,8 +9,8 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
-import com.vo.FormatRecordVO;
-import com.vo.QuestAndAnswerVO;
+import com.work.vo.FormatRecordVO;
+import com.work.vo.QuestAndAnswerVO;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

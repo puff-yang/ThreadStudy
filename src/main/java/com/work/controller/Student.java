@@ -1,13 +1,6 @@
-package com.controller;
+package com.work.controller;
 
-import jdk.nashorn.internal.parser.JSONParser;
 import org.junit.Test;
-
-import java.awt.*;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Random;
 
 /**
  * @ClassName Student

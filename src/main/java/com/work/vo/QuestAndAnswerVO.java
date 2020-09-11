@@ -1,4 +1,4 @@
-package com.vo;
+package com.work.vo;
 
 /**
  * @ClassName QuestAndAnswerVO

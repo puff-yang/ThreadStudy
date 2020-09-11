@@ -1,4 +1,4 @@
-package com.vo;
+package com.work.vo;
 
 import java.util.List;
 
