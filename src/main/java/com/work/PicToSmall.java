@@ -27,7 +27,7 @@ public class PicToSmall {
 
 
     public static void main(String[] args) throws IOException {
-        String  base64=GetImageStr("p1.jpeg");
+        String  base64=GetImageStr("pic/p1.jpeg");
         System.out.println(base64);
 
         GenerateImage(base64);

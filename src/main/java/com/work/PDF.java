@@ -30,7 +30,7 @@ public class PDF {
         PdfDocument pdfDocument = null;
         PdfWriter writer =null;
         try {
-            writer = new PdfWriter("merger.pdf");
+            writer = new PdfWriter("pic/merger.pdf");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

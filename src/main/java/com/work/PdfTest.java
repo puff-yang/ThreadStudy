@@ -35,7 +35,7 @@ public class PdfTest {
         Document document = new Document();
         try {
             //写入文本到文件中
-            PdfWriter.getInstance(document, new FileOutputStream("Paragraph1.pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("pic/Paragraph1.pdf"));
             //打开文本
             document.open();
             //定义字体
