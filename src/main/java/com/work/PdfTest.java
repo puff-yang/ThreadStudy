@@ -20,6 +20,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -168,8 +170,28 @@ public class PdfTest {
     @Test
     public void testFile(){
 
-        File file=new File("Praph1.pdf");
-        System.out.println(file.exists());
+//        File file=new File("pic");
+//        System.out.println(file.exists());
+//        File fileList[]=file.listFiles();
+//        for (File fileName :fileList) {
+//            System.out.println(fileName);
+//        }
+        String str="PIC_02_13455_1707_220.JPG";
+        Matcher matcher = Pattern.compile("_").matcher(str);
+        int i = 0;
+        while(matcher.find()) {
+            i++;
+            //当"/"符号第三次出现的位置
+            if(i == 3){
+                break;
+            }
+        }
+        int start=matcher.start();
+        String startStr=str.substring(start+1);
+        System.out.println(startStr);
+        String imgType=startStr.substring(0,startStr.indexOf("_"));
+
+        System.out.println(imgType);
     }
 
 }

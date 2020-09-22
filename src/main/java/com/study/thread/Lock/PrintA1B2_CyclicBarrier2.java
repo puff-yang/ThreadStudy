@@ -18,42 +18,42 @@ public class PrintA1B2_CyclicBarrier2 {
 
     public static void main(String[] args) throws InterruptedException {
 
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for (int i = 0; i < 26; i++) {
-                        System.out.print((char) ('a' + i));
-                        try {
-                            cyclicBarrierL.await();
-                            cyclicBarrierN.await();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        } catch (BrokenBarrierException e) {
-                            e.printStackTrace();
-                        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 26; i++) {
+                    System.out.print((char)('a'+i) );
+                    try {
+                        cyclicBarrierL.await();
+                        cyclicBarrierN.await();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (BrokenBarrierException e) {
+                        e.printStackTrace();
                     }
                 }
-            });
+            }
+        }).start();
 
 
 
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    for (int i = 0; i < 26; i++) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 26; i++) {
 
-                        try {
-                            cyclicBarrierL.await();
-                            System.out.print(1 + i);
-                            cyclicBarrierN.await();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        } catch (BrokenBarrierException e) {
-                            e.printStackTrace();
-                        }
+                    try {
+                        cyclicBarrierL.await();
+                        System.out.print(1+i);
+                        cyclicBarrierN.await();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (BrokenBarrierException e) {
+                        e.printStackTrace();
                     }
                 }
-            }).start();
+            }
+        }).start();
 
 
 

@@ -32,6 +32,7 @@ public class PrintA1B2_Condition {
                     e.printStackTrace();
                 }
             }
+            //printNum.signal();
         }).start();
 
         TimeUnit.SECONDS.sleep(2);
@@ -48,6 +49,8 @@ public class PrintA1B2_Condition {
                     e.printStackTrace();
                 }
             }
+            //保证线程最后不是处于await状态，否则将一直等待无法退出
+            printLetter.signal();
         }).start();
 
 

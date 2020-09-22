@@ -46,6 +46,7 @@ public class ReentrantLock3 {
         boolean isLock=false;
         try {
             isLock=lock.tryLock(2000, TimeUnit.MILLISECONDS);
+            System.out.println("don't wait");
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {

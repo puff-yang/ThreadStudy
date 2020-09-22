@@ -25,12 +25,13 @@ public class PrintA1B2_LockSupport {
             }
         });
         t1.start();
-        TimeUnit.SECONDS.sleep(1);
+
         t2=new Thread(()->{
             for (int i = 1; i < 27; i++) {
+                LockSupport.park();
                 System.out.print(i);
                 LockSupport.unpark(t1);
-                LockSupport.park();
+
             }
         });
         t2.start();
